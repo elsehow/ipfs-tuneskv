@@ -2,7 +2,7 @@
 
 a hyperkv of ipfs hashes and song metadata
 
-## install
+## Install
 
 ```
 npm install ipfs-tuneskv
@@ -16,7 +16,10 @@ let memdb = require('memdb')
 let log = hyperlog(memdb(), { valueEncoding: 'json' })
 let coolSong = require('path').join(__dirname, 'ex.mp3')
 let tkv = tuneskv(log)
-addSong(coolSong, cb)
+addSong(coolSong, (err, node) => {
+  if (err) console.log('err!', err)
+  console.log(node) // should include ex.mp3 id3 tags
+})
 ```
 
 ## api
