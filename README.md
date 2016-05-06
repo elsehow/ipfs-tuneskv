@@ -10,6 +10,8 @@ npm install ipfs-tuneskv
 
 ## use
 
+make sure [ipfs-daemon](https://ipfs.io/) is running and accessible via `ipfs`
+
 ```javascript
 let hyperlog = require('hyperlog')
 let memdb = require('memdb')
@@ -18,7 +20,10 @@ let coolSong = require('path').join(__dirname, 'ex.mp3')
 let tkv = tuneskv(log)
 addSong(coolSong, (err, node) => {
   if (err) console.log('err!', err)
-  console.log(node) // should include ex.mp3 id3 tags
+  if (node) {
+    console.log(node.value.v) // should have ex.mp3 id3 tags
+    console.log(node.value.k) // should be ipfs hash for ex.mp3
+  }
 })
 ```
 
