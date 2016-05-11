@@ -41,6 +41,5 @@ module.exports = (kv) => {
 
   return {
     add: add,
-    hyperkv, hyperkv,
   }
 }

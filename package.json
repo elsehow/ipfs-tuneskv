@@ -1,6 +1,7 @@
 {
   "author": "elsehow",
   "license": "BSD-3-Clause",
+  "name": "ipfs-tuneskv",
   "main": "src/index.js",
   "scripts": {
     "test": "tape test/*.js|tap-spec",

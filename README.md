@@ -44,13 +44,11 @@ tkv.add(coolSong, (err, node) => {
 
 ## api
 
-### let tkv = tuneskv(hyperloglike)
+### let tkv = tuneskv(kv)
 
-Hyperlog can be anything with a [hyperlog](https://github.com/mafintosh/hyperlog) API - a [swarmlog](https://github.com/substack/swarmlog), [ipfs-hyperlog](https://github.com/noffle/ipfs-hyperlog), etc. Just make sure `{ valueEncoding: 'json' }` (see 'use').
+kv can be anything with a level-style put/get API - the above example uses [hyperkv](https://www.npmjs.com/package/hyperkv)
 
-`tkv` will have all the same methods as a [hyperkv](https://www.npmjs.com/package/hyperkv), plus an `addSong(path, cb)` method - see below.
-
-### addSong(path, cb)
+### .add(path, cb)
 
 `path` to some song
 
