@@ -1,6 +1,11 @@
+'use strict'
 const exec = require('child_process').exec
 const metadata = require('musicmetadata')
 const read = require('fs').createReadStream
+
+function escape (str) {
+  return "'" + str.replace(/'/g, "'\"'\"'") + "'" 
+}
 
 // adds file at `path` to ipfs
 // calls back (err, hash)
@@ -31,7 +36,8 @@ module.exports = (kv) => {
     return metadata(read(song), function (err, mdata) {
       if (err)
         return handle(err)
-      return addToIpfs(song, (err, hash) => {
+      let path = escape(song)
+      return addToIpfs(path, (err, hash) => {
         if (err)
           return handle(err)
         return kv.put(hash, _dbEntry(hash, mdata), cb)
